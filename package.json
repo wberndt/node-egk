@@ -1,0 +1,20 @@
+{
+  "name": "egk",
+  "version": "1.0.0",
+  "description": "NodeJS library for reading german public health insurance cards (eGK)",
+  "main": "lib/egkreader.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wberndt/node-egk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wberndt/node-egk/issues"
+  },
+  "homepage": "https://github.com/wberndt/node-egk#readme",
+  "dependencies": {
+    "pcsclite": "^1.0.0",
+    "xml2js": "^0.4.23"
+  }
+}
