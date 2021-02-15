@@ -7,8 +7,7 @@ egk.on('card-disconnect', (reader) => { console.log(`Card disconnected from read
 egk.on('card-connect', async (reader) => {
     console.log(`Card connected to reader: ${reader}, reading data...`);
     try {
-        const result = await egk.getPatientData();
-        console.log("Got data: ", result);
+        console.log("Got data: ", await egk.getPatientData());
         //egk.dispose();
     } catch (err) {
         console.log("Got error: ", err);

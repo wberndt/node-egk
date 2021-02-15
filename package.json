@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/wberndt/node-egk#readme",
   "dependencies": {
+    "iconv": "^3.0.0",
     "pcsclite": "^1.0.0",
     "xml2js": "^0.4.23"
   }
