@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/wberndt/node-egk.git"
   },
-  "author": "",
+  "author": "Wolfgang Berndt <w.berndt@berndt-edv.de>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wberndt/node-egk/issues"
