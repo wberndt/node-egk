@@ -8,7 +8,9 @@
     "url": "git+https://github.com/wberndt/node-egk.git"
   },
   "author": "Wolfgang Berndt <w.berndt@berndt-edv.de>",
+  "contributors": ["Stefan Gauter <s.gauter@doohmedia.net>"],
   "license": "ISC",
+  "keywords": ["egk", "smartcard", "pcsc"],
   "bugs": {
     "url": "https://github.com/wberndt/node-egk/issues"
   },
