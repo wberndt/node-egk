@@ -8,6 +8,11 @@ A Node.js package for reading the unencrypted data from german public health ins
 - Install [PCSC Lite](https://pcsclite.apdu.fr/). On Debian/Ubuntu systems this can be done using `apt install libpcsclite1 libpcsclite-dev pcscd`. 
 - `npm install egk`
 
+## Supported card readers
+
+This library was written and tested using the [Identiv uTrust 2770 R](https://support.identiv.com/2700r/) but should work with any reader that provides a PC/SC driver.
+
+
 ## Usage
 
 See `example/index.js` for a full example on how to use this module. Basically, you just have to subscribe to a "card was inserted"-event and call `getInsurantData` when it occurs:
