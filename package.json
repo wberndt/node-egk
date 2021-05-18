@@ -8,15 +8,23 @@
     "url": "git+https://github.com/wberndt/node-egk.git"
   },
   "author": "Wolfgang Berndt <w.berndt@berndt-edv.de>",
-  "contributors": ["Stefan Gauter <s.gauter@doohmedia.net>"],
+  "contributors": [
+    "Stefan Gauter <s.gauter@doohmedia.net>"
+  ],
   "license": "ISC",
-  "keywords": ["egk", "smartcard", "pcsc"],
+  "keywords": [
+    "egk",
+    "smartcard",
+    "pcsc"
+  ],
   "bugs": {
     "url": "https://github.com/wberndt/node-egk/issues"
   },
   "homepage": "https://github.com/wberndt/node-egk#readme",
   "dependencies": {
+    "@lapo/asn1js": "^1.2.1",
     "iconv": "^3.0.0",
+    "moment": "^2.29.1",
     "pcsclite": "^1.0.0",
     "xml2js": "^0.4.23"
   }
