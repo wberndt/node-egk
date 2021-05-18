@@ -1,6 +1,6 @@
 # node-egk
 
-A Node.js package for reading the unencrypted data from german public health insurance cards ("elektronische Gesundheitskarte", eGK).
+A Node.js package for reading the unencrypted data from public health insurance cards from germany (eGK) and austria (e-Card)
 
 ## Installation
 
@@ -11,7 +11,6 @@ A Node.js package for reading the unencrypted data from german public health ins
 ## Supported card readers
 
 This library was written and tested using the [Identiv uTrust 2770 R](https://support.identiv.com/2700r/) but should work with any reader that provides a PC/SC driver.
-
 
 ## Usage
 
@@ -65,6 +64,11 @@ This results in a JSON object representing the insurants data:
 ```
 
 ### API
+The functions and events are in both classes the same.
+
+#### Classes
+* eGKReader
+* eCardReader
 
 #### Events
 
