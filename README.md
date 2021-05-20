@@ -20,11 +20,11 @@ See `example/index.js` for a full example on how to use this module. Basically, 
 const eGKReader = require('egk');
 const egk = new eGKReader();
 
-egk.on('card-connect', async () => {    
+egk.on('card-connect', async (reader, atr) => {    
     try {
         // Note that this library uses promises/async&await for asynchronous operations and does not 
         // provide a callback. 
-        const data = await egk.getInsurantData();
+        const data = await egk.getInsurantData(atr);
         // do stuff
     } catch (err) {
         console.log("Error: ", err);
@@ -33,42 +33,22 @@ egk.on('card-connect', async () => {
 ```
 
 This results in a JSON object representing the insurants data:
-
 ```json
 {
-   "UC_PersoenlicheVersichertendatenXML":{
-      "$":{
-         "CDM_VERSION":"5.2.0",
-         "xmlns:vsdp":"http://ws.gematik.de/fa/vsdm/vsd/v5.2"
-      },
-      "Versicherter":{
-         "Versicherten_ID":"K123456789",
-         "Person":{
-            "Geburtsdatum":"19760201",
-            "Vorname":"Max",
-            "Nachname":"Mustermann",
-            "Geschlecht":"M",
-            "StrassenAdresse":{
-               "Postleitzahl":"12345",
-               "Ort":"Musterstadt",
-               "Land":{
-                  "Wohnsitzlaendercode":"D"
-               },
-               "Strasse":"Musterstr.",
-               "Hausnummer":"1"
-            }
-         }
-      }
-   }
+   "cardtype":"egk", //egk or ecard
+   "insuredid":"P123456789",
+   "dob":"19881005",
+   "forename":"Max",
+   "surname":"Musterman",
+   "sex":"M",
+   "street":"Musterstr.",
+   "housenr":"1",
+   "zipcode":"12345",
+   "city":"Musterstadt"
 }
 ```
 
 ### API
-The functions and events are in both classes the same.
-
-#### Classes
-* eGKReader
-* eCardReader
 
 #### Events
 
@@ -76,7 +56,7 @@ Event | Description
 ------|------------|
 reader-connect | Emitted when a smartcard reader is present. Returns the name of the reader. |
 reader-disconnect | Emitted when the smartcard reader is removed. Returns the name of the reader. |
-card-connect | Emitted when a card is inserted into the reader.  Returns the name of the reader. |
+card-connect | Emitted when a card is inserted into the reader.  Returns the name of the reader and the atr from the card. |
 card-disconnect | Emitted when the card is removed from the reader. Returns the name of the reader. |
 error | Emitted when the underlying smartcard library reported an error, for example if an unsupported card was inserted into the reader. Returns an `Error` object. |
 
@@ -84,5 +64,7 @@ error | Emitted when the underlying smartcard library reported an error, for exa
 
 Function | Description | Returns |
 ---------|-------------|---------|
-getInsurantData() | Reads the unencrypted insurant data file from the card and returns the data as JSON object. | A promise resolving with a JSON object or rejecting with an `Error`. |
+getInsurantData(atr) | Selects automatically the card based on the "art" and reads the unencrypted insurance data file and returns the data as JSON object. | A promise resolving with a JSON object or rejecting with an `Error`. |
+getInsurantDataDE() | Reads the unencrypted insurance data file from the the german card and returns the data as JSON object. | A promise resolving with a JSON object or rejecting with an `Error`. |
+getInsurantDataAT() | Reads the unencrypted insurance data file from the the austria card and returns the data as JSON object. | A promise resolving with a JSON object or rejecting with an `Error`. |
 dispose() | Removes all resources and event handlers used by the pcsc library. | - |
