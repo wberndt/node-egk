@@ -1,17 +1,5 @@
 const eGKReader = require('../lib/egkreader');
-const eCardReader = require("../lib/ecardreader");
-
-const loc = "de"; //de,at
-
-let cardReader = null;
-switch (loc) {
-    case "de":
-        cardReader = new eGKReader();
-        break;
-    case "at":
-        cardReader = new eCardReader();
-        break;
-}
+const cardReader = new eGKReader();
 
 cardReader.on('reader-connect', (reader) => { console.log(`Reader "${reader}" connected.`) });
 
@@ -20,10 +8,10 @@ cardReader.on('reader-disconnect', (reader) => {
     reader.dispose();
 });
 
-cardReader.on('card-connect', async (reader) => {
+cardReader.on('card-connect', async (reader, atr) => {
     console.log(`Card inserted into reader "${reader}", getting data...`);
     try {
-        const userData = await cardReader.getInsurantData();
+        const userData = await cardReader.getInsurantData(atr);
         console.log(JSON.stringify(userData));
     } catch (err) {
         console.log("Error: ", err);
