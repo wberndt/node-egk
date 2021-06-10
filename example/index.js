@@ -1,24 +1,23 @@
 const eGKReader = require('../lib/egkreader');
+const cardReader = new eGKReader();
 
-const egk = new eGKReader();
-egk.on('reader-connect', (reader) => { console.log(`Reader "${reader}" connected.`) });
+cardReader.on('reader-connect', (reader) => { console.log(`Reader "${reader}" connected.`) });
 
-egk.on('reader-disconnect', (reader) => {
+cardReader.on('reader-disconnect', (reader) => {
     console.log(`Reader "${reader}" disconnected, shutting down.`);
-    egk.dispose();
+    reader.dispose();
 });
 
-egk.on('card-connect', async (reader) => {
+cardReader.on('card-connect', async (reader, atr) => {
     console.log(`Card inserted into reader "${reader}", getting data...`);
     try {
-        const userData = await egk.getInsurantData();
+        const userData = await cardReader.getInsurantData(atr);
         console.log(JSON.stringify(userData));
     } catch (err) {
         console.log("Error: ", err);
     }
 });
 
-egk.on('card-disconnect', (reader) => { console.log(`No card in reader "${reader}"`) });
+cardReader.on('card-disconnect', (reader) => { console.log(`No card in reader "${reader}"`) });
 
-egk.on('error', (err) => { console.log(`Error: ${err.message}`, err) });
-
+cardReader.on('error', (err) => { console.log(`Error: ${err.message}`, err) });
