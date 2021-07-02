@@ -24,7 +24,7 @@ egk.on('card-connect', async (reader, atr) => {
     try {
         // Note that this library uses promises/async&await for asynchronous operations and does not 
         // provide a callback. 
-        const data = await egk.getInsurantData(atr);
+        const data = await egk.getInsurantData(atr, "DE");
         // do stuff
     } catch (err) {
         console.log("Error: ", err);
@@ -65,7 +65,7 @@ error | Emitted when the underlying smartcard library reported an error, for exa
 
 Function | Description | Returns |
 ---------|-------------|---------|
-getInsurantData(atr) | Reads the unencrypted insurance data file from a german or austrian health insurance card, depending on the cards ATR response. | A promise resolving with a JSON object or rejecting with an `Error`. |
+getInsurantData(atr, fallbackType) | Reads the unencrypted insurance data file from a german or austrian health insurance card, depending on the cards ATR response. You can pass a fallback card-type ("AT" or "DE") that is used if the ATR detection fails. | A promise resolving with a JSON object or rejecting with an `Error`. |
 getInsurantDataDE() | Same as above, but expects a german health insurance card. The ATR value is ignored. | A promise resolving with a JSON object or rejecting with an `Error`. |
 getInsurantDataAT() | Same as above, but expects an austrian health insurance card. The ATR value is ignored. | A promise resolving with a JSON object or rejecting with an `Error`. |
 dispose() | Removes all resources and event handlers used by the pcsc library. | - |
