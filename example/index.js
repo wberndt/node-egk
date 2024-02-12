@@ -11,7 +11,7 @@ cardReader.on('reader-disconnect', (reader) => {
 cardReader.on('card-connect', async (reader, atr) => {
     console.log(`Card inserted into reader "${reader}", getting data...`);
     try {
-        const userData = await cardReader.getInsurantData(atr);
+        const userData = await cardReader.getInsurantData(atr, "DE");
         console.log(JSON.stringify(userData));
     } catch (err) {
         console.log("Error: ", err);
