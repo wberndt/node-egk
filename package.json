@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/wberndt/node-egk#readme",
   "dependencies": {
-    "@lapo/asn1js": "^1.2.1",
-    "iconv": "^3.0.0",
-    "moment": "^2.29.1",
-    "pcsclite": "^1.0.0",
-    "xml2js": "^0.4.23"
+    "@lapo/asn1js": "^1.2.4",
+    "iconv": "^3.0.1",
+    "moment": "^2.30.1",
+    "pcsclite": "^1.0.1",
+    "xml2js": "^0.6.2"
   }
 }
