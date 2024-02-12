@@ -1,6 +1,6 @@
 {
   "name": "egk",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "NodeJS library for reading public health insurance cards from germany (eGK) and austria (e-Card)",
   "main": "lib/egkreader.js",
   "repository": {
