@@ -27,5 +27,9 @@
     "moment": "^2.30.1",
     "pcsclite": "^1.0.1",
     "xml2js": "^0.6.2"
+  },
+  "allowScripts": {
+    "iconv@3.0.1": true,
+    "pcsclite@1.0.1": true
   }
 }
