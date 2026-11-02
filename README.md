@@ -12,6 +12,14 @@ A Node.js package for reading the unencrypted data from public health insurance 
 
 This library was written and tested using the [Identiv uTrust 2770 R](https://support.identiv.com/2700r/) but should work with any reader that provides a PC/SC driver.
 
+Combined readers like the Identiv uTrust 4701 F expose their contact and contactless (NFC) interfaces as two separate PC/SC readers. Reading health insurance cards via NFC does not work reliably yet, so you can restrict the library to the contact interface with the `readerFilter` option:
+
+```js
+const egk = new eGKReader({ readerFilter: /Contact Reader/i });
+```
+
+`readerFilter` accepts a `RegExp` that is tested against the reader name, or a function `(readerName) => boolean`. By default all readers are used.
+
 ## Usage
 
 See `example/index.js` for a full example on how to use this module. Basically, you just have to subscribe to a "card was inserted"-event and call `getInsurantData` when it occurs:

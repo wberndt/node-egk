@@ -1,5 +1,7 @@
 const eGKReader = require('../lib/egkreader');
-const cardReader = new eGKReader();
+
+// Only use readers that do not have "Windows" in their name (e.g. Windows Hello)
+const cardReader = new eGKReader({readerFilter: /^(?!.*Windows).*$/});
 
 cardReader.on('reader-connect', (reader) => { console.log(`Reader "${reader}" connected.`) });
 
